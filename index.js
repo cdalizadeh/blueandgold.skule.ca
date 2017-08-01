@@ -3,7 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 var app = express();
-app.set('port', 3000);
+app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
@@ -13,5 +13,5 @@ app.post('/', function (req, res) {
 });
 
 var server = app.listen(app.get('port'), function() {
-    console.log('Listening on port 3000');
+    console.log('Listening.');
 });
