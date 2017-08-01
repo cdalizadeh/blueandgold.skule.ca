@@ -4,7 +4,8 @@
   "description": "The website for UofT Engineering's Blue and Gold Committee",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stat": "node index.js"
   },
   "repository": {
     "type": "git",
