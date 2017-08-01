@@ -282,16 +282,16 @@
     <div class="col-sm-7">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name (optional)" type="text" required>
+          <input class="form-control" id="name" name="name" placeholder="Name (optional)" type="text">
         </div>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email (optional)" type="email" required>
+          <input class="form-control" id="email" name="email" placeholder="Email (optional)" type="text">
         </div>
       </div>
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-primary-outline pull-right" type="submit">Send</button>
+          <button class="btn btn-primary-outline pull-right" onclick="FormSub()">Send</button>
         </div>
       </div>
     </div>
@@ -303,19 +303,20 @@
 </footer>
 
 <script>
-$(document).ready(function(){
-  // Slide in elements on scroll
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
-
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
+function FormSub(){
+  $.ajax({
+    url: "/",
+    method: "post",
+    contentType: 'application/json',
+    data: JSON.stringify({"name" : document.getElementById("name").value, "email" : document.getElementById("email").value, "comments" : document.getElementById("comments").value}),
+    success: function(result){
+        console.log("ses");
+    },
+    error: function(err){
+      console.log(err);
+    }
   });
-})
+}
 </script>
 
 </body>
