@@ -310,7 +310,7 @@ function FormSub(){
     contentType: 'application/json',
     data: JSON.stringify({"name" : document.getElementById("name").value, "email" : document.getElementById("email").value, "comments" : document.getElementById("comments").value}),
     success: function(result){
-        console.log("ses");
+      console.log("success");
     },
     error: function(err){
       console.log(err);
