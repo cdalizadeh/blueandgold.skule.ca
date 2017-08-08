@@ -70,7 +70,7 @@ footer{
     border-color: #ccc;
     color: #ffffff;
 }
-.btn:hover {
+.btn:hover, .btn:focus {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     background-color: #ffffff;

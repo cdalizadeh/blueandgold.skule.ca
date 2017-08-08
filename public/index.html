@@ -82,7 +82,7 @@
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-primary-outline pull-right" onclick="FormSub()">Send</button>
+          <button id="submit-button" class="btn btn-primary-outline pull-right" onclick="FormSub()">Send</button>
         </div>
       </div>
     </div>
@@ -95,17 +95,21 @@
 
 <script>
 function FormSub(){
-
+  $('#submit-button').addClass('disabled');
   $.ajax({
     url: "/",
     method: "post",
     contentType: 'application/json',
     data: JSON.stringify({"name" : document.getElementById("name").value, "email" : document.getElementById("email").value, "comments" : document.getElementById("comments").value}),
     success: function(result){
-      console.log("success");
+      $('#submit-button').blur();
+      $('#submit-button').removeClass('disabled');
+      $('#submit-button').html('Message delivered.');
     },
     error: function(err){
-      console.log(err);
+      $('#submit-button').blur();
+      $('#submit-button').removeClass('disabled');
+      $('#submit-button').html('Error. Try again later.');
     }
   });
 }
