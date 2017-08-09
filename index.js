@@ -38,7 +38,7 @@ function sendMail(text, cb){
         text: text
     }
     request({
-        url: 'https://api.mailgun.net/v3/sandbox2967c7328b27470ca8bbbda44c6291da.mailgun.org/messages',
+        url: 'https://api.mailgun.net/v3/sandboxa687916c2a7242b48a835aebf6db5160.mailgun.org/messages',
         method: 'POST',
         headers: headers,
         form: formData,
