@@ -9,6 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
 app.post('/', function (req, res) {
+    console.log('a');
     var body = req.body;
     if (!body || !body.comments) res.status(400).send();
     else{
@@ -28,12 +29,13 @@ var server = app.listen(app.get('port'), function() {
 });
 
 function sendMail(text, cb){
+    console.log('b');
     var headers = {
         'Authorization': 'Basic ' + process.env.MAILGUN_KEY
     };
     var formData = {
         from: 'Automated Feedback Mailer<website@blueandgold.mailgun.org>',
-        to: 'cdalizadeh@gmail.com',
+        to: 'blueandgold@skule.ca',
         subject: 'Website Feedback Received',
         text: text
     }
@@ -43,6 +45,9 @@ function sendMail(text, cb){
         headers: headers,
         form: formData,
         callback: function(err, res, body){
+            console.log('c');
+            console.log(err);
+            console.log(body);
             if (err || JSON.parse(body).message != 'Queued. Thank you.') cb('Internal Mailing Error');
             else cb(null, body);
         }
